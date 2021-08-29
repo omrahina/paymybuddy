@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:replace="components :: head" />
+
+<body>
+
+<th:block th:replace="components :: mainNav" />
+
+<nav aria-label="breadcrumb">
+    <div class="container-fluid bg-light p-3 mb-3">
+        <ul class="breadcrumb mb-0" >
+            <li class="breadcrumb-item active" aria-current="page">Home</li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row mb-3">
+        <img th:src="@{/images/homebg.jpg}" alt="Share with friends" height="600" />
+        <div>
+            <h3>Transfers have never been this easy</h3>
+            <a th:href="@{/transfer}" class="logo text-white">Transfer money</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

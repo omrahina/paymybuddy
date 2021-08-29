@@ -1,0 +1,91 @@
+*{
+    font-family: 'Raleway', sans-serif;
+}
+
+body{
+    padding-top: 70px;
+}
+
+input, select{
+    border: 1px solid silver;
+}
+
+input, select, .input-group button{
+    border-radius: 0.25rem !important;
+}
+
+#wrapper{
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    padding: .75rem;
+}
+
+.logo{
+    background-color: limegreen;
+    padding: 0.5em;
+    font-weight: bold;
+    border-radius: 0.25rem !important;
+}
+
+.text-bold{
+    font-weight: bold;
+}
+
+.login a{
+    text-decoration: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.navbar .navbar-brand, .nav-item .nav-link, .btn{
+    font-weight: bold;
+}
+
+.btn-primary{
+    background-color: limegreen;
+    border-color: limegreen;
+}
+
+.btn-primary:hover{
+    background-color: #3CB371 !important;
+    border-color: #3CB371;
+}
+
+.btn-secondary{
+    background-color: white !important;
+    border-color: limegreen !important;
+    color: limegreen;
+}
+
+.btn-secondary:focus, .btn-secondary:hover, .btn-secondary:active{
+    color: #3CB371;
+}
+
+.btn-connection{
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.border-grey{
+    border: silver solid 2px;
+}
+
+.table thead{
+    background-color: limegreen;
+    color: white;
+}
+
+.nav-link{
+    margin-right: 1rem;
+}
+
+#outTransfer{
+    margin-left: .5rem;
+}
+
+.mr-10{
+    margin-right: 10px;
+}
