@@ -1,13 +1,13 @@
 package com.paymybuddy.paymybuddy.Controller;
 
+import com.paymybuddy.paymybuddy.Common.ExistingUserException;
+import com.paymybuddy.paymybuddy.Dto.UserDTO;
 import com.paymybuddy.paymybuddy.model.User;
 import com.paymybuddy.paymybuddy.serviceImpl.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
@@ -63,6 +63,26 @@ public class UserController {
     public String currentUserEmail(HttpServletRequest request) {
         Principal principal = request.getUserPrincipal();
         return principal != null ? principal.getName() : null;
+    }
+
+    @GetMapping("/registration")
+    public String showRegistrationPage(Model model){
+        UserDTO user = new UserDTO();
+        model.addAttribute("user", user);
+        return REGISTRATION;
+    }
+
+    @PostMapping("/registration")
+    public String createAccount(@ModelAttribute("user") UserDTO userDTO, Model model){
+
+        try{
+            userService.createAccount(userDTO);
+            model.addAttribute("success", "Registration success. Please login to access your account");
+        } catch (ExistingUserException e){
+            model.addAttribute("error", "An account for that username/email already exists.");
+            return REGISTRATION;
+        }
+        return LOGIN;
     }
 
 }

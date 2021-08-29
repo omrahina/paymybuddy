@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:replace="components :: head" />
+
+<body>
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-5">
+            <div th:if="${error != null}" class="card bg-light my-3">
+                <div class="card-body">
+                    <div th:utext="${error}" class="card-text"></div>
+                </div>
+            </div>
+            <form th:action="@{/registration}" th:object="${user}" method="post" class="px-3 py-3 border-grey">
+                <div class="mb-4 d-flex justify-content-center">
+                    <a th:href="@{/home}" class="logo text-white" th:text="#{app.title}">Pay My Buddy</a>
+                </div>
+                <div class="form-floating mb-4">
+                    <input type="email" th:field="*{email}" name="email" id="email" class="form-control" required="true" autofocus="true" placeholder="name@example.com"/>
+                    <label for="email" th:text="#{email}"></label>
+                </div>
+                <div class="form-floating mb-4">
+                    <input type="password" th:field="*{password}" name="password" id="password" class="form-control" required="true" placeholder="Password"/>
+                    <label for="password" th:text="#{password}"></label>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button class="col-auto btn btn-primary cursor-pointer align-top px-4"
+                            id="btn-register"
+                            type="submit">
+                        <span th:text="#{signin}">Signin</span>
+                    </button>
+                </div>
+            </form>
+
+            <div class="mt-2">
+                <small>Already have an account?</small>
+                <a th:href="@{/login}" th:text="#{login}">login</a>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
