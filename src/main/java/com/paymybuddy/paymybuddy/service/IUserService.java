@@ -9,4 +9,6 @@ public interface IUserService {
 
     User createAccount(UserDTO userDTO);
 
+    User updateUser(UserDTO userDTO);
+
 }

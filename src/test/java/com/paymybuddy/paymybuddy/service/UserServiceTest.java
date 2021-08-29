@@ -60,4 +60,30 @@ public class UserServiceTest {
                 .withMessage("An account with the email address: user1@gmail.com already exists");
 
     }
+
+    @Test
+    public void should_update_a_user(){
+        User userToUpdate = new User("user1@gmail.com", "password");
+        UserDTO user = new UserDTO("user1@gmail.com", "password");
+        user.setFirstName("Tati");
+        userToUpdate.setFirstName(user.getFirstName());
+        when(userRepository.findUserByEmail(anyString())).thenReturn(userToUpdate);
+        when(userRepository.save(any(User.class))).thenReturn(userToUpdate);
+
+        User updatedUser = userService.updateUser(user);
+
+        assertThat(updatedUser).isNotNull();
+    }
+
+    @Test
+    public void should_not_update_a_user(){
+        UserDTO user = new UserDTO("user1@gmail.com", "password");
+        user.setFirstName("Tati");
+        when(userRepository.findUserByEmail(anyString())).thenReturn(null);
+
+        User updatedUser = userService.updateUser(user);
+
+        assertThat(updatedUser).isNull();
+
+    }
 }

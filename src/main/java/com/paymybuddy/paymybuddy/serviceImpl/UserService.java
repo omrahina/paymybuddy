@@ -11,6 +11,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @Transactional
 @Data
@@ -45,6 +48,23 @@ public class UserService implements IUserService {
         log.info("user with email "+ userDTO.getEmail() + " created");
 
         return userRepository.save(newUser);
+    }
+
+    @Override
+    public User updateUser(UserDTO user) {
+        User userToUpdate = userRepository.findUserByEmail(user.getEmail());
+        if (userToUpdate != null){
+//            userToUpdate.setPassword(user.getPassword());
+            userToUpdate.setFirstName(user.getFirstName() != null ? user.getFirstName() : null);
+            userToUpdate.setLastName(user.getLastName() != null ? user.getLastName() : null);
+            userToUpdate.setBankAccount(user.getBankAccount() != null ? user.getBankAccount() : null);
+            userToUpdate = userRepository.save(userToUpdate);
+            log.info("user updated");
+
+            return userToUpdate;
+        }
+        log.error("Failed to update the user");
+        return null;
     }
 
     private boolean emailExists(String email){
