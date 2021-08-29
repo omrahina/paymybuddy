@@ -1,29 +1,35 @@
 package com.paymybuddy.paymybuddy.model;
 
-import com.paymybuddy.paymybuddy.Common.Constants;
-import lombok.*;
+
+import com.paymybuddy.paymybuddy.Common.Operation;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "Transfer")
+@Table(name = "Bank_Operation")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Transfer {
+public class BankOperation {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "bank_account")
+    private String bankAccount;
+
     @Column(name = "amount")
     private BigDecimal amount;
 
-    @Column(name = "rate")
-    private double rate;
+    @Column(name = "type")
+    private Operation type;
 
     @Column(name = "description")
     private String description;
@@ -35,25 +41,12 @@ public class Transfer {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "buddy_id", referencedColumnName = "id")
-    private User buddy;
-
-    public Transfer(User user, User buddy, BigDecimal amount, String description){
+    public BankOperation(User user, String bankAccount, BigDecimal amount, Operation type, String description){
         this.user = user;
-        this.buddy = buddy;
+        this.bankAccount = bankAccount;
         this.amount = amount;
-        this.rate = Constants.PERCENTAGE;
+        this.type = type;
         this.description = description;
         this.date = LocalDate.now();
-    }
-
-    public String toString() {
-        return "Transfer{" +
-                "id=" + id +
-                ", amount=" + amount +
-                ", description='" + description + '\'' +
-                ", date=" + date +
-                '}';
     }
 }
