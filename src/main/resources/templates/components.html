@@ -1,0 +1,81 @@
+<th:block xmlns:th="http://www.thymeleaf.org" th:fragment="head">
+    <head>
+        <title th:text="#{app.title}">Pay My Buddy</title>
+<!--        <link rel="stylesheet" type="text/css" th:href="@{/bootstrap-5.0.1/css/bootstrap.css}">-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/global.css(anticache=anticache-param)}">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+</th:block>
+
+<th:block xmlns:th="http://www.thymeleaf.org" th:fragment="mainNav">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand logo text-white" th:href="@{/home}">Pay My Buddy</a>
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarMUT" aria-controls="navbarMUT" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
+                    <ul class="navbar-nav ml-auto ">
+                        <li class="nav-item">
+                            <a th:href="@{/home}" class="nav-link" id="linkHome">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a th:href="@{/transfer}" class="nav-link" id="linkTransfer">Transfer</a>
+                        </li>
+                        <li th:if="${user != null}" class="nav-item">
+                            <a th:href="@{/profile}" class="nav-link" id="linkProfile">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a th:href="@{/contact}" class="nav-link" id="linkContact">Contact</a>
+                        </li>
+                        <li th:if="${user != null}" class="nav-item">
+                            <a th:href="@{/logout}" class="nav-link" id="linkLogOff">Log off</a>
+                        </li>
+                        <li th:unless="${user != null}" class="nav-item">
+                            <a th:href="@{/login}" class="nav-link" id="linkLogIn">Log in</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </nav>
+    </header>
+</th:block>
+
+<th:block xmlns:th="http://www.thymeleaf.org" th:fragment="addConnection">
+    <form class="d-flex flex-row">
+        <div class="form-group mb-3">
+            <label for="emailSearch" th:text="#{email}"></label>
+            <input type="email" id="emailSearch" class="form-control" required="true" autofocus="true"/>
+        </div>
+        <button type="submit" class="btn btn-primary pay">
+            <span th:text="#{app.search}">Search</span>
+        </button>
+    </form>
+</th:block>
+
+<th:block xmlns:th="http://www.thymeleaf.org" th:fragment="notification">
+    <th:block th:if="${message != null}">
+        <div class="card bg-light my-3">
+            <div class="card-body">
+                <div th:utext="${message}" class="card-text"></div>
+            </div>
+        </div>
+    </th:block>
+</th:block>
+
+<th:block xmlns:th="http://www.thymeleaf.org" th:fragment="breadCrumb">
+    <nav aria-label="breadcrumb">
+        <ul class="breadcrumb" >
+            <li>
+                <a th:href="${entry.queryString}" th:unless="${entry.isCurrent}" th:text="${entry.label}">Home</a>
+                <span th:if="${entry.isCurrent}" th:text="${entry.label}">Home</span>
+            </li>
+        </ul>
+    </nav>
+</th:block>
