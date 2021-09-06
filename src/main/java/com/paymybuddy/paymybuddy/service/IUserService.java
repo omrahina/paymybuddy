@@ -11,4 +11,6 @@ public interface IUserService {
 
     User updateUser(UserDTO userDTO);
 
+    User addConnection(User user, User buddy);
+
 }
