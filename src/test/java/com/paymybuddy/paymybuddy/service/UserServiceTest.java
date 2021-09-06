@@ -118,4 +118,17 @@ public class UserServiceTest {
         assertThat(updatedUser).isNull();
 
     }
+
+    @Test
+    public void should_return_buddies(){
+        User user = new User("user1@gmail.com", "password");
+        User buddy = new User("user2@gmail.com", "password");
+        user.setBuddies(new ArrayList<>());
+        user.addBuddy(buddy);
+
+        List<String> connections = userService.getConnections(user);
+
+        assertThat(connections).isNotEmpty();
+        assertThat(connections).contains("user2@gmail.com");
+    }
 }

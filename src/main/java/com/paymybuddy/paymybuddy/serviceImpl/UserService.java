@@ -79,6 +79,13 @@ public class UserService implements IUserService {
         return null;
     }
 
+    @Override
+    public List<String> getConnections(User user) {
+        return user.getBuddies().stream()
+                .map(User::getEmail)
+                .collect(Collectors.toList());
+    }
+
     private boolean emailExists(String email){
         return userRepository.findUserByEmail(email) != null;
     }
