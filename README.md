@@ -2,6 +2,16 @@
 
 Pay My Buddy is an application that offers a number of features easing the process of sending and receiving money. It allows users to manage their finances or pay their friends.
 
+## Diagrams
+
+### Class diagram
+
+![Class diagram](doc/class_diagram.png)
+
+### Physical data model
+
+![Physical data model](doc/mpd.PNG)
+
 ## Installation
 
 ### Prerequisites
