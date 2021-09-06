@@ -67,6 +67,18 @@ public class UserService implements IUserService {
         return null;
     }
 
+    @Override
+    public User addConnection(User user, User buddy){
+        User userToUpdate = userRepository.findUserByEmail(user.getEmail());
+        if(!userToUpdate.getBuddies().contains(buddy)){
+            userToUpdate.addBuddy(buddy);
+            log.info("buddy added!");
+            return userRepository.save(userToUpdate);
+        }
+        log.error("user and buddy already connected");
+        return null;
+    }
+
     private boolean emailExists(String email){
         return userRepository.findUserByEmail(email) != null;
     }

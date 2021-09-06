@@ -113,4 +113,29 @@ public class UserController {
         return new ResponseEntity<>("Same actual and new password.", HttpStatus.CONFLICT);
     }
 
+    @GetMapping("/addConnection")
+    public String addConnectionFake(Model model){
+        model.addAttribute("addConnection", true);
+        return TRANSFER ;
+    }
+
+    @PostMapping("/addConnection")
+    public ResponseEntity<String> addConnection(@RequestParam(name = "connection") String buddyEmail, Model model,
+                                                HttpServletRequest request){
+        String currentUserEmail = currentUserEmail(request);
+        User buddy = userService.findUser(buddyEmail);
+
+        if (buddy != null){
+            User updatedUser = userService.addConnection(userService.findUser(currentUserEmail), buddy);
+            if (updatedUser != null){
+                return new ResponseEntity<>("Buddy successfully added.", HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>("You are already connected to this email.", HttpStatus.CONFLICT);
+            }
+        }
+        log.error("Unknown email");
+
+        return new ResponseEntity<>("The email is unknown. Please make sure your buddy has an account.", HttpStatus.BAD_REQUEST);
+    }
+
 }

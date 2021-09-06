@@ -10,6 +10,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -82,6 +85,35 @@ public class UserServiceTest {
         when(userRepository.findUserByEmail(anyString())).thenReturn(null);
 
         User updatedUser = userService.updateUser(user);
+
+        assertThat(updatedUser).isNull();
+
+    }
+
+    @Test
+    public void should_add_a_connection(){
+        User user = new User("user1@gmail.com", "password");
+        user.setBuddies(new ArrayList<>());
+        User buddy = new User("user2@gmail.com", "password");
+        when(userRepository.findUserByEmail(anyString())).thenReturn(user);
+        when(userRepository.save(any(User.class))).thenReturn(user);
+
+        User updatedUser = userService.addConnection(user, buddy);
+
+        assertThat(updatedUser).isNotNull();
+        assertThat(updatedUser.getBuddies()).hasSize(1);
+
+    }
+
+    @Test
+    public void should_not_add_a_connection(){
+        User user = new User("user1@gmail.com", "password");
+        User buddy = new User("user2@gmail.com", "password");
+        user.setBuddies(new ArrayList<>());
+        user.addBuddy(buddy);
+        when(userRepository.findUserByEmail(anyString())).thenReturn(user);
+
+        User updatedUser = userService.addConnection(user, buddy);
 
         assertThat(updatedUser).isNull();
 
