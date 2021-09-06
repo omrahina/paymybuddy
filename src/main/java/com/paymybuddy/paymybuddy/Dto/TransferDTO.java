@@ -25,8 +25,15 @@ public class TransferDTO {
     }
 
     public TransferDTO(User user, String connection, BigDecimal amount){
-        this.user = user;
+        this(user);
         this.connection = connection;
         this.amount = amount;
+    }
+
+    public TransferDTO(User user, BigDecimal amount, boolean toMyBankAccount, boolean fromMyBankAccount){
+        this(user);
+        this.amount = amount;
+        this.toMyBankAccount = toMyBankAccount;
+        this.fromMyBankAccount = fromMyBankAccount;
     }
 }

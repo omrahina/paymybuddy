@@ -5,14 +5,17 @@ import com.paymybuddy.paymybuddy.Dto.TransferDTO;
 import com.paymybuddy.paymybuddy.model.Transfer;
 import com.paymybuddy.paymybuddy.model.User;
 import com.paymybuddy.paymybuddy.service.ITransferService;
-import com.paymybuddy.paymybuddy.serviceImpl.BankOperationService;
 import com.paymybuddy.paymybuddy.serviceImpl.UserService;
+import com.paymybuddy.paymybuddy.serviceImpl.BankOperationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
@@ -73,6 +76,18 @@ public class TransferController {
         model.addAttribute("connections", userService.getConnections(user));
         model.addAttribute("newTransfer", new TransferDTO(user));
         return TRANSFER;
+    }
+
+    @PostMapping("/transfer/bank")
+    @ResponseBody
+    public ResponseEntity<String> bankTransfer(@ModelAttribute("newTransfer") TransferDTO transfer, Model model){
+        try{
+            bankOperationService.bankOperation(transfer);
+            return new ResponseEntity<>("Transaction successfully executed.", HttpStatus.OK);
+        } catch (FailedTransactionException e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+
     }
 
     @GetMapping("/transfers")
