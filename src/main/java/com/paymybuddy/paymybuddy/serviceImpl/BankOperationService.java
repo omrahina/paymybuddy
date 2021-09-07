@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 @Service
 @Transactional
@@ -51,17 +50,6 @@ public class BankOperationService implements IBankOperationService {
         }
         log.error("Failed transaction");
         throw new FailedTransactionException("Failed transaction.");
-    }
-
-    @Override
-    public List<BankOperation> myOperations(String userEmail) {
-        List<BankOperation> operations = bankOperationRepository.findAllByUserEmail(userEmail);
-        if (!operations.isEmpty()){
-            log.info("Bank operation(s) found for the current user");
-            return operations;
-        }
-        log.error("No operation found");
-        return List.of();
     }
 
     /**

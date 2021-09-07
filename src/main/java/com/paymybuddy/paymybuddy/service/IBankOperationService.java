@@ -4,8 +4,6 @@ import com.paymybuddy.paymybuddy.Common.FailedTransactionException;
 import com.paymybuddy.paymybuddy.Dto.TransferDTO;
 import com.paymybuddy.paymybuddy.model.BankOperation;
 
-import java.util.List;
-
 public interface IBankOperationService {
 
     /**
@@ -15,7 +13,5 @@ public interface IBankOperationService {
      * @throws FailedTransactionException
      */
     BankOperation bankOperation(TransferDTO transfer) throws FailedTransactionException;
-
-    List<BankOperation> myOperations(String userEmail);
 
 }

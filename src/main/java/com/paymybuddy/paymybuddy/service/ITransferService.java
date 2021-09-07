@@ -25,6 +25,4 @@ public interface ITransferService {
      */
     Transfer newTransfer(TransferDTO transfer, User buddy) throws FailedTransactionException;
 
-    List<Transfer> getAllTransfers();
-
 }

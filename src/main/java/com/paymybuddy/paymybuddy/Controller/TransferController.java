@@ -5,8 +5,8 @@ import com.paymybuddy.paymybuddy.Dto.TransferDTO;
 import com.paymybuddy.paymybuddy.model.Transfer;
 import com.paymybuddy.paymybuddy.model.User;
 import com.paymybuddy.paymybuddy.service.ITransferService;
-import com.paymybuddy.paymybuddy.serviceImpl.UserService;
 import com.paymybuddy.paymybuddy.serviceImpl.BankOperationService;
+import com.paymybuddy.paymybuddy.serviceImpl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -88,12 +88,6 @@ public class TransferController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
 
-    }
-
-    @GetMapping("/transfers")
-    public String getAllTransfers(Model model){
-        model.addAttribute("transfers", transferService.getAllTransfers());
-        return "transfer";
     }
 
     public String currentUserEmail(HttpServletRequest request) {

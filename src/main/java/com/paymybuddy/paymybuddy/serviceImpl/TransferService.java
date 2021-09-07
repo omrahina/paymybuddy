@@ -77,11 +77,4 @@ public class TransferService implements ITransferService {
                 .compareTo(BigDecimal.ZERO) > 0;
     }
 
-    @Override
-    public List<Transfer> getAllTransfers() {
-        List<Transfer> transfers = transferRepository.findAll();
-        log.info("passed");
-        return transfers;
-    }
-
 }
