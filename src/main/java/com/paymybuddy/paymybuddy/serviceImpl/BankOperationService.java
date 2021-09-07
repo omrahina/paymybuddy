@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 @Transactional
@@ -52,9 +53,26 @@ public class BankOperationService implements IBankOperationService {
         throw new FailedTransactionException("Failed transaction.");
     }
 
-    private boolean transferPossible(User user, BigDecimal realAmount){
+    @Override
+    public List<BankOperation> myOperations(String userEmail) {
+        List<BankOperation> operations = bankOperationRepository.findAllByUserEmail(userEmail);
+        if (!operations.isEmpty()){
+            log.info("Bank operation(s) found for the current user");
+            return operations;
+        }
+        log.error("No operation found");
+        return List.of();
+    }
+
+    /**
+     * Determines whether the user has sufficient funds
+     * @param user the sender
+     * @param amount the amount to be transferred
+     * @return true if the balance is not negative, false otherwise
+     */
+    private boolean transferPossible(User user, BigDecimal amount){
         return user.getBalance()
-                .subtract(realAmount)
+                .subtract(amount)
                 .compareTo(BigDecimal.ZERO) >= 0;
     }
 }

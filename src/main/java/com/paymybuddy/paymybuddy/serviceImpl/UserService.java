@@ -86,6 +86,11 @@ public class UserService implements IUserService {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Verify if an email already exists in the application
+     * @param email a string
+     * @return true or false depending on whether the email exists or not
+     */
     private boolean emailExists(String email){
         return userRepository.findUserByEmail(email) != null;
     }

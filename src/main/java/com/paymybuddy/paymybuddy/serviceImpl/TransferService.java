@@ -55,11 +55,22 @@ public class TransferService implements ITransferService {
         throw new FailedTransactionException("Not enough money in your account.");
     }
 
+    /**
+     * This method applies a determined percentage to an amount
+     * @param amount the amount to be transferred
+     * @return the actual deductible amount
+     */
     private BigDecimal realAmountValue(BigDecimal amount){
         BigDecimal percentageAmount = amount.multiply(BigDecimal.valueOf(Constants.PERCENTAGE / 100.0));
         return amount.add(percentageAmount);
     }
 
+    /**
+     * Determines whether the user has sufficient funds
+     * @param user the sender
+     * @param realAmount transfer percentage applied
+     * @return true if the balance is above zero, false otherwise
+     */
     private boolean transferPossible(User user, BigDecimal realAmount){
         return user.getBalance()
                 .subtract(realAmount)
