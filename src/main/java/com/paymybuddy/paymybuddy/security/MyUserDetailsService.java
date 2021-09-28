@@ -1,6 +1,6 @@
 package com.paymybuddy.paymybuddy.security;
 
-import com.paymybuddy.paymybuddy.Repository.UserRepository;
+import com.paymybuddy.paymybuddy.repository.UserRepository;
 import com.paymybuddy.paymybuddy.model.User;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;

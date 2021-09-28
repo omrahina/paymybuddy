@@ -1,4 +1,4 @@
-package com.paymybuddy.paymybuddy.Dto;
+package com.paymybuddy.paymybuddy.dto;
 
 import com.paymybuddy.paymybuddy.model.User;
 import lombok.AllArgsConstructor;

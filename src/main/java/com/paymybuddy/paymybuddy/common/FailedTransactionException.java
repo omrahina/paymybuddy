@@ -1,4 +1,4 @@
-package com.paymybuddy.paymybuddy.Common;
+package com.paymybuddy.paymybuddy.common;
 
 public class FailedTransactionException extends RuntimeException{
 

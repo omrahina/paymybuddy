@@ -1,8 +1,8 @@
-package com.paymybuddy.paymybuddy.Controller;
+package com.paymybuddy.paymybuddy.controller;
 
-import com.paymybuddy.paymybuddy.Common.ExistingUserException;
-import com.paymybuddy.paymybuddy.Dto.TransferDTO;
-import com.paymybuddy.paymybuddy.Dto.UserDTO;
+import com.paymybuddy.paymybuddy.common.ExistingUserException;
+import com.paymybuddy.paymybuddy.dto.TransferDTO;
+import com.paymybuddy.paymybuddy.dto.UserDTO;
 import com.paymybuddy.paymybuddy.model.User;
 import com.paymybuddy.paymybuddy.serviceImpl.UserService;
 import lombok.extern.slf4j.Slf4j;

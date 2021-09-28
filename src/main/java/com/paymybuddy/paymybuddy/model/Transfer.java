@@ -1,6 +1,6 @@
 package com.paymybuddy.paymybuddy.model;
 
-import com.paymybuddy.paymybuddy.Common.Constants;
+import com.paymybuddy.paymybuddy.common.Constants;
 import lombok.*;
 
 import javax.persistence.*;

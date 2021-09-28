@@ -1,7 +1,7 @@
 package com.paymybuddy.paymybuddy.model;
 
 
-import com.paymybuddy.paymybuddy.Common.Operation;
+import com.paymybuddy.paymybuddy.common.Operation;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

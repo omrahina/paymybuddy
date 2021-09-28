@@ -1,7 +1,7 @@
 package com.paymybuddy.paymybuddy.service;
 
-import com.paymybuddy.paymybuddy.Common.FailedTransactionException;
-import com.paymybuddy.paymybuddy.Dto.TransferDTO;
+import com.paymybuddy.paymybuddy.common.FailedTransactionException;
+import com.paymybuddy.paymybuddy.dto.TransferDTO;
 import com.paymybuddy.paymybuddy.model.Transfer;
 import com.paymybuddy.paymybuddy.model.User;
 

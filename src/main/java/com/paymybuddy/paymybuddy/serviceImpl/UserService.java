@@ -1,8 +1,8 @@
 package com.paymybuddy.paymybuddy.serviceImpl;
 
-import com.paymybuddy.paymybuddy.Common.ExistingUserException;
-import com.paymybuddy.paymybuddy.Dto.UserDTO;
-import com.paymybuddy.paymybuddy.Repository.UserRepository;
+import com.paymybuddy.paymybuddy.common.ExistingUserException;
+import com.paymybuddy.paymybuddy.dto.UserDTO;
+import com.paymybuddy.paymybuddy.repository.UserRepository;
 import com.paymybuddy.paymybuddy.model.User;
 import com.paymybuddy.paymybuddy.service.IUserService;
 import lombok.Data;

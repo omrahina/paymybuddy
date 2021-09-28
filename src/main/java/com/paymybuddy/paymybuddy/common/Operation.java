@@ -1,4 +1,4 @@
-package com.paymybuddy.paymybuddy.Common;
+package com.paymybuddy.paymybuddy.common;
 
 public enum  Operation {
     IN("in"),
