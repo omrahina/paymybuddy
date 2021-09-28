@@ -4,9 +4,11 @@ import com.paymybuddy.paymybuddy.model.BankOperation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface BankOperationRepository extends JpaRepository<BankOperation, Long> {
 
     @Query(value = "SELECT operation FROM BankOperation operation " +
