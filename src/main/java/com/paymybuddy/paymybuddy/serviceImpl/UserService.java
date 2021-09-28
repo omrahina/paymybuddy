@@ -2,10 +2,9 @@ package com.paymybuddy.paymybuddy.serviceImpl;
 
 import com.paymybuddy.paymybuddy.common.ExistingUserException;
 import com.paymybuddy.paymybuddy.dto.UserDTO;
-import com.paymybuddy.paymybuddy.repository.UserRepository;
 import com.paymybuddy.paymybuddy.model.User;
+import com.paymybuddy.paymybuddy.repository.UserRepository;
 import com.paymybuddy.paymybuddy.service.IUserService;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -16,7 +15,6 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
-@Data
 @Slf4j
 public class UserService implements IUserService {
 

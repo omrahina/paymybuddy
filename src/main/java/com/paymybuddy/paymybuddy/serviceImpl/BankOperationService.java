@@ -3,11 +3,10 @@ package com.paymybuddy.paymybuddy.serviceImpl;
 import com.paymybuddy.paymybuddy.common.FailedTransactionException;
 import com.paymybuddy.paymybuddy.common.Operation;
 import com.paymybuddy.paymybuddy.dto.TransferDTO;
-import com.paymybuddy.paymybuddy.repository.BankOperationRepository;
 import com.paymybuddy.paymybuddy.model.BankOperation;
 import com.paymybuddy.paymybuddy.model.User;
+import com.paymybuddy.paymybuddy.repository.BankOperationRepository;
 import com.paymybuddy.paymybuddy.service.IBankOperationService;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +15,6 @@ import java.math.BigDecimal;
 
 @Service
 @Transactional
-@Data
 @Slf4j
 public class BankOperationService implements IBankOperationService {
 
