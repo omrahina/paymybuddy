@@ -21,7 +21,7 @@ Pay My Buddy is an application that offers a number of features easing the proce
 
 ### Run
 
-Please note that you will have to set up the tables in the databse. For this, please run the sql commands present in the ``` create_db.sql ``` file under the ``` resources ``` folder.
+Please note that you will have to set up the tables in the database. For this, please run the sql commands present in the ``` create_db.sql ``` file under the ``` resources ``` folder.
 
 Build the project
 
